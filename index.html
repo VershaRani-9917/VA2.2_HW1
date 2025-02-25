@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>HTML</title>
+   
+    <style>
+      .container {
+           display: inline;
+           align-items: center;
+           gap: 10px;
+           
+       }
+
+       .container label {
+           margin-right: 10px;
+           display: inline;
+       }
+</style>
+  </head>
+  <body>
+
+    <div class="container">
+    <label>Program 1: Select a music genre:</label>
+   <input  type="radio" name="music" value="Pop"/>Pop
+   <input  type="radio" name="music" value="Rock"/>Rock
+   <input  type="radio" name="music" value="Hip-Hop"/>Hip-Hop
+   <p id="musicResult"></p>
+
+   <label>Program 2:Choose a language preference:</label>
+   <input  type="radio" name="language" value="English"/>English
+   <input  type="radio" name="language" value="Spanish"/>Spanish
+   <input  type="radio" name="language" value="French"/>French
+   <p id="languageResult"></p>
+
+   <label>Program 3: Select a job role:</label>
+      <label><input type="checkbox" name="job" value="Developer">Developer</label>
+      <label><input type="checkbox" name="job" value="Designer">Designer</label>
+      <label><input type="checkbox" name="job" value="Manager">Manager</label>
+      
+      <button onclick="displaySelectedJob()">Display Selected Job Role</button>
+      <p id="jobResult"></p>
+ 
+
+       <label>Program 4: Select multiple sport:</label>
+        <label><input type="checkbox" name="sports" value="Soccer"> Soccer</label>
+        <label><input type="checkbox" name="sports" value="Basketball"> Basketball</label>
+        <label><input type="checkbox" name="sports" value="Tennis"> Tennis</label>
+        
+        <button onclick="displaySelectedSports()">Display Selected Sports</button>
+        <p id="sportResult"></p
+
+
+     <label> Program 5: Choose multiple clothing colors:</label>
+      <label><input type="checkbox" name="colors" value="Black">Black</label>
+     <label><input type="checkbox" name="colors" value="White">White</label>
+      <label><input type="checkbox" name="colors" value="Blue">Blue</label>
+  
+    <button onclick="displaySelectedColors()">Display Selected Clothing Colors</button>
+    <p id="colorsResult"></p>
+
+  </div>
+
+   <script>
+    const musicRadioButton = document.getElementsByName("music") 
+    const musicResult = document.getElementById("musicResult")
+    for(let i = 0; i < musicRadioButton.length; i++){
+      musicRadioButton[i].addEventListener("change", function(){
+    const selectedRadioButton = document.querySelector('input[name="music"]:checked').value
+    musicResult.textContent = `Selected Music: ${selectedRadioButton}`
+  })
+}
+
+
+   const languageRadioButton = document.getElementsByName("language") 
+    const languageResult = document.getElementById("languageResult")
+    
+    for(let i = 0; i < languageRadioButton.length; i++){
+      languageRadioButton[i].addEventListener("change", function(){
+    const selectedLanguagePreference = document.querySelector('input[name="language"]:checked').value
+    languageResult.textContent = `Selected Language: ${selectedLanguagePreference}`
+  })
+}
+
+
+
+function displaySelectedJob() {
+          const checkboxes = document.querySelectorAll('input[name="job"]:checked');
+          let selectedJob = [];
+          checkboxes.forEach((checkbox) => {
+              selectedJob.push(checkbox.value);
+          });
+
+          const jobResultDiv = document.getElementById('jobResult');
+          if (selectedJob.length > 0) {
+            jobResultDiv.innerHTML = "Selected Destinations: " + selectedJob.join(", ");
+          } else {
+            JobResultDiv.innerHTML = "Please select at least one destination.";
+          }
+      }
+
+
+
+      function displaySelectedSports() {
+          const checkboxes = document.querySelectorAll('input[name="sports"]:checked');
+          let selectedSports = [];
+          checkboxes.forEach((checkbox) => {
+              selectedSports.push(checkbox.value);
+          });
+
+          const sportResultDiv = document.getElementById('sportResult');
+          if (selectedSports.length > 0) {
+            sportResultDiv.innerHTML = "Selected Sports: " + selectedSports.join(", ");
+          } else {
+            sportResultDiv.innerHTML = "Please select at least one sport.";
+          }
+      }
+
+
+      function displaySelectedColors() {
+          const checkboxes = document.querySelectorAll('input[name="colors"]:checked');
+          let selectedColors = [];
+          checkboxes.forEach((checkbox) => {
+              selectedColors.push(checkbox.value);
+          });
+
+          const colorsResultDiv = document.getElementById('colorsResult');
+          if (selectedColors.length > 0) {
+            colorsResultDiv.innerHTML = "Selected Colors: " + selectedColors.join(", ");
+          } else {
+            colorsResultDiv.innerHTML = "Please select at least one color.";
+          }
+      }
+
+
+    </script>
+  </body>
+</html>
